@@ -46,5 +46,4 @@
 
   <%= link_to "Add a bookmark", new_list_bookmark_path(@list.id), class: "btn btn-primary"  %>
   <%= link_to "Get back to lists", lists_path, class: "btn btn-primary"  %>
-  <%= link_to "Delete this list", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 </div>
