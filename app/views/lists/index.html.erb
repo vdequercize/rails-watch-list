@@ -36,7 +36,7 @@
   <% if list.photo.key %>
   <div class="card-product-list" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path list.photo.key, height: 120, width: 400, crop: :fill%>');">
   <% else %>
-    <div class="card-product-list" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('...');">
+    <div class="card-product-list" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80');">
     <% end %>
     <div class="card-product-infos">
       <li> <%= link_to list.name, list_path(list.id) %> </li>

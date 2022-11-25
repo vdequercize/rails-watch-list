@@ -21,7 +21,11 @@
   </div>
 </div>
 
+<% if @list.photo.key %>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @list.photo.key, height: 300, width: 400, crop: :fill%>');">
+<% else %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80');">
+<% end %>
   <div class="container">
     <h1><%= @list.name %></h1>
     <p> <%= @list.movies.length %> movies </p>
