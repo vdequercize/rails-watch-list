@@ -32,11 +32,17 @@
 <h1>My lists</h1>
 
 <ul>
-<% @lists.each do |list| %>
-<div class="card-product card-product-infos">
-<li> <%= link_to list.name, list_path(list.id) %> </li>
-</div>
-<% end %>
+  <% @lists.each do |list| %>
+  <% if list.photo.key %>
+  <div class="card-product-list" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path list.photo.key, height: 120, width: 400, crop: :fill%>');">
+  <% else %>
+    <div class="card-product-list" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('...');">
+    <% end %>
+    <div class="card-product-infos">
+      <li> <%= link_to list.name, list_path(list.id) %> </li>
+    </div>
+  </div>
+  <% end %>
 </ul>
 
 <%= link_to "Create a new list", new_list_path, class: "btn btn-primary"  %>
