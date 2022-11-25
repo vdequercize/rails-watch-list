@@ -1,0 +1,48 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "https://images.unsplash.com/photo-1622498186306-1c97361dabbb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fHBvcGNvcm58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <%= link_to "My lists", lists_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "New list", new_list_path, class: "nav-link" %>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <p> <%= @list.movies.length %> movies </p>
+  </div>
+</div>
+
+<div class="container">
+  <ul>
+  <% @list.movies.each do |movie| %>
+  <div class="card-product">
+    <img src = <%=movie.poster_url %>>
+    <div class ="card-product-infos">
+      <% bookmark = Bookmark.find_by(list: @list.id, movie: movie.id) %>
+      <h3> <%= movie.title %> </h3>
+      <p> <%= movie.rating %> </p>
+      <p> <%= movie.overview %> </p>
+      <p> <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> </p>
+    </div>
+  </div>
+  <% end %>
+
+  <%= link_to "Add a bookmark", new_list_bookmark_path(@list.id), class: "btn btn-primary"  %>
+  <%= link_to "Get back to lists", lists_path, class: "btn btn-primary"  %>
+</div>
